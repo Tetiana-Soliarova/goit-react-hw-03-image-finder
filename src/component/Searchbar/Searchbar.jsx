@@ -1,29 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import {Component} from 'react';
+//import PropTypes from 'prop-types';
 import styles from "./searchbar.module.css";
 
-const Searchbar = (onSubmit) => {
-  return (
-    <header className={styles.Searchbar}>
-      <form className={styles.SearchForm}>
-        <button type="submit" className={styles.SearchFormButton}>
-          <span className={styles.SearchFormButtonLabel}>Search</span>
-        </button>
+export default class Searchbar extends Component {
+  state = {
+    tagsName: " ",
+  };
+//получаем значение в стейт
+  hendleNameChange = (event) => {
+    this.setState({ tagsName: event.currentTarget.value.toLowerCase() });
+  };
 
-        <input
-                  className={styles.SearchFormInput}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-      </form>
-    </header>
-  );
+    //записиваем значение в стейт
+    hendleSubmit = event => {
+        event.preventDefault();
+        //проверка что не пустая строка
+        if (this.state.tagsName.trim() === "") {
+          alert("Введите даные для поиска");
+          return;
+        }
+        this.props.onSubmit(this.state.tagsName);
+        //очистка поля после сабмита
+        this.setState({ tagsName: "" });
+  }
+
+  render() {
+    return (
+      <header className={styles.Searchbar}>
+        <form className={styles.SearchForm} onSubmit={this.hendleSubmit}>
+          <button type="submit" className={styles.SearchFormButton}>
+            <span className={styles.SearchFormButtonLabel}>Search</span>
+          </button>
+
+          <input
+            className={styles.SearchFormInput}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            value={this.state.tagsName}
+            onChange={this.hendleNameChange}
+          />
+        </form>
+      </header>
+    );
+  }
 };
 
-Searchbar.propTypes = {
-  onSubmit: PropTypes.string,
-};
+//Searchbar.propTypes = {onSubmit: PropTypes.string,};
+  
 
-export default Searchbar;
+
