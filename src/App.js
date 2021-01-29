@@ -43,7 +43,7 @@ export default class App extends Component{
     <div >
       <Searchbar onSubmit={this.hendleFormSubmit} />
       
-      <ImageCallery tagsName={this.state.tagsName} images={this.state.images }/>
+      <ImageCallery tagsName={this.state.tagsName} images={this.state.images } webformatURL={this.state.images.webformatURL}/>
           {showModal && <Modal/>}
     </div>
   )};

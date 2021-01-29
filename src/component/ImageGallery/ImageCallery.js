@@ -35,14 +35,14 @@ export default class ImageCallery extends Component {
     <ul className="ImageGallery">
       
         {/* this.state.images.length !== 0 &&  ()*/}
-      {/*this.state.images.map(image  => {
-        <ImageGalleryItem id={image.id} tags={image.tags} webformatURL={image.webformatURL} />
-       })*/}
+      {this.state.images.map(image  => (
+        <ImageGalleryItem key={image.id} tags={image.tags} src={image.webformatURL} />
+       ))}
       {/*this.state.images.map(({ id, webformatURL  }) => {
         <ImageGalleryItem key={id} webformatURL={webformatURL} />
        })*/}
       
-      <ImageGalleryItem id={this.state.images.id} tags={this.state.images.tags} webformatURL={this.state.images.webformatURL} />
+      {/*<ImageGalleryItem id={this.state.images.id} tags={this.state.images.tags} webformatURL={this.state.images.webformatURL} />*/}
         {this.state.loading && <div>Загружается....</div>}
       </ul>
   )} 
