@@ -19,7 +19,7 @@ export default class ImageCallery extends Component {
           this.setState({loading:true})
           
           fetch(
-            `https://pixabay.com/api/?q=${this.props.tagsName}&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=3`
+            `https://pixabay.com/api/?q=${this.props.tagsName}&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
           )
             .then((response) => response.json())
             //.then(console.log)
