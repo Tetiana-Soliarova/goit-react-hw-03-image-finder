@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./imageGalleryItem.module.css";
 
-export default function ImageGalleryItem(src, tags, id) {
+export default function ImageGalleryItem({src, tags, id}) {
   //const { id, webformatURL } = images;key={id}
   return (
     <>

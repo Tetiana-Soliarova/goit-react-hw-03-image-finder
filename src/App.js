@@ -1,9 +1,9 @@
 import { Component } from 'react';
-
+import './App.css';
 import Searchbar from './component/Searchbar/Searchbar'
 import ImageCallery from './component/ImageGallery/ImageCallery'
 import Modal from './component/Modal/Modal'
-
+import Button from './component/Button/Button'
 
 
 
@@ -43,7 +43,9 @@ export default class App extends Component{
     <div >
       <Searchbar onSubmit={this.hendleFormSubmit} />
       
-      <ImageCallery tagsName={this.state.tagsName} images={this.state.images } webformatURL={this.state.images.webformatURL}/>
+      <ImageCallery tagsName={this.state.tagsName} />
+      
+      <Button/>
           {showModal && <Modal/>}
     </div>
   )};
