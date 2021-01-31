@@ -1,28 +1,27 @@
-import {Component} from 'react';
-//import PropTypes from 'prop-types';
+import { Component } from "react";
 import styles from "./searchbar.module.css";
 
 export default class Searchbar extends Component {
   state = {
     tagsName: " ",
   };
-//получаем значение в стейт
+  //получаем значение в стейт
   hendleNameChange = (event) => {
     this.setState({ tagsName: event.currentTarget.value.toLowerCase() });
   };
 
-    //записиваем значение в стейт
-    hendleSubmit = event => {
-        event.preventDefault();
-        //проверка что не пустая строка
-        if (this.state.tagsName.trim() === "") {
-          alert("Введите даные для поиска");
-          return;
-        }
-        this.props.onSubmit(this.state.tagsName);
-        //очистка поля после сабмита
-        this.setState({ tagsName: "" });
-  }
+  //записиваем значение в стейт
+  hendleSubmit = (event) => {
+    event.preventDefault();
+    //проверка что не пустая строка
+    if (this.state.tagsName.trim() === "") {
+      alert("Введите даные для поиска");
+      return;
+    }
+    this.props.onSubmit(this.state.tagsName);
+    //очистка поля после сабмита
+    this.setState({ tagsName: "" });
+  };
 
   render() {
     return (
@@ -45,9 +44,4 @@ export default class Searchbar extends Component {
       </header>
     );
   }
-};
-
-//Searchbar.propTypes = {onSubmit: PropTypes.string,};
-  
-
-
+}
