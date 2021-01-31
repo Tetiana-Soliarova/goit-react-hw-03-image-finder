@@ -1,22 +1,26 @@
-import React, { Component } from "react";
+import React, { Children, Component } from "react";
 import { createPortal } from "react-dom";
 import styles from './modal.module.css'
 
 const modalRoot = document.querySelector("#modal-root");
 
 export default class Modal extends Component {
+
+
   componentDidMount() {
-    window.addEventListener("Keydown", (e) => {
+    window.addEventListener("keydown", (e) => {
       if (e.code === "Escape") {
-        this.props.onClose();
+        this.props.onClose(e);
       }
     });
   }
 
   componentWillUnmount() {
-    window.removeEventListener("Keydown", (e) => {
+    window.removeEventListener("keydown", (e) => {
+      console.log(e.code)
       if (e.code === "Escape") {
-        this.props.onClose();
+        console.log('Escape')
+        this.props.onClose(e);
       }
     });
   }
@@ -25,12 +29,15 @@ export default class Modal extends Component {
     return createPortal(
       <div className={styles.Overlay}>
         <div className={styles.Modal}>
-          <p className={styles.text}>Модальне вікно </p>
           
-          <img src="" alt="" />
+          
+          <img src={this.props.largeImageURL} alt=""/>
+          
         </div>
       </div>,
       modalRoot
     );
   }
 }
+//<button onClick={this.onClick}> Show modal </button>
+//

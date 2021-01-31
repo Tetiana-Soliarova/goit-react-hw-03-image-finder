@@ -1,21 +1,23 @@
 import styles from './button.module.css';
-import React from 'react';
-import PropTypes from 'prop-types';
+//import LoaderApp from '../Loader/loader'
+//import React from 'react';
+//import PropTypes from 'prop-types';
 
-const button = props => {
-    return (
-      <div>
-        <button type="button" class={styles.button} data-action="load-more">
-          <span class="spinner " role="status" aria-hidden="true"></span>
-          <span class="label">Load more</span>
-        </button>
-      </div>
-    );
+export default function Button({ onClick }) {
+  return (
+    <button
+      type="button"
+      class={styles.button}
+      data-action="load-more"
+      onClick={onClick}
+    >
+      
+     
+      <span class="spinner " role="status" aria-hidden="true"></span>
+      <span class="label"> Load more</span>
+    </button>
+  );
 };
 
-button.propTypes = {
-    
-};
 
-export default button;
 
