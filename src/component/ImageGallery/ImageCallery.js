@@ -27,7 +27,7 @@ export default class ImageCallery extends Component {
         window.scrollTo({
           top: document.documentElement.scrollHeight,
           behavior: 'smooth',
-        })
+        });
       }
     }
   }
