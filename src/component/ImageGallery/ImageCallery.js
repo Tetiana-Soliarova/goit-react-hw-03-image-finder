@@ -1,4 +1,8 @@
 import { Component } from 'react'
+//import InfiniteScroll from 'react-infinite-scroller';
+
+
+
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem'
 import Button from '../Button/Button'
 import LoaderApp from '../Loader/loader'
@@ -15,20 +19,16 @@ export default class ImageCallery extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const nextPage = this.state.page
+    //const nextPage = this.state.page
     if (prevProps.tagsName !== this.props.tagsName) {
       // console.log('изменилось имя ')
       // console.log('prevProps.tagsName:', prevProps.tagsName)
       //console.log('this.props.tagsName:', this.props.tagsName)
+      
       this.setState({ loading: true, images: [] })
       this.fetchImagesApi()
 
-      if (nextPage > 2) {
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: 'smooth',
-        });
-      }
+      
     }
   }
 
@@ -39,6 +39,7 @@ export default class ImageCallery extends Component {
       `https://pixabay.com/api/?q=${this.props.tagsName}&page=${this.state.page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`,
     )
       .then((response) => {
+         
         if (response.ok) {
           return response.json()
         }
@@ -47,10 +48,12 @@ export default class ImageCallery extends Component {
             `Картинки с даным названием ${this.state.tagsName}не найдено`,
           ),
         )
+       
       })
       .then((images) =>
         this.setState({ images: [...images.hits], page: this.state.page + 1 }),
-      )
+    )
+      
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ loading: false }))
   }
@@ -61,7 +64,7 @@ export default class ImageCallery extends Component {
     fetch(
       `https://pixabay.com/api/?q=${this.props.tagsName}&page=${this.state.page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`,
     )
-      .then((response) => {
+      .then((response) => { 
         if (response.ok) {
           return response.json()
         }
@@ -77,10 +80,27 @@ export default class ImageCallery extends Component {
           images: [...prevState.images, ...images.hits],
           page: prevState.page + 1,
         })),
-      ) //-
+        this.onScrollTo()
+    ) //-
+      
+      
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ loading: false }))
   }
+
+
+ 
+
+onScrollTo() {
+    let value = document.body.scrollHeight;
+    setTimeout(() => {
+        window.scrollTo({
+            top: value,
+            left: 0,
+            behavior: 'smooth',
+        });
+    }, 1000);
+}
 
   //------------------MODAL---------------------
 
@@ -93,16 +113,20 @@ export default class ImageCallery extends Component {
     const { error, images, loading } = this.state
     return (
       <div>
-        <ul>
+    
+
+    {<ul>
           {error && <h1>{error.message}</h1>}
 
           <ImageGalleryItem
             images={this.state.images}
             onClick={this.toggleModalCloseOpen}
           />
+        </ul>} 
 
-          {loading && <LoaderApp />}
-        </ul>
+        
+
+         {loading && <LoaderApp />}
         {images.length > 0 && !loading && <Button onClick={this.fetchImages} />}
 
         {this.state.showModal && (

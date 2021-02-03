@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-03-image-finder",
+  "name": "goit-react-hw-03-images-finder",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Tetiana-Soliarova.github.io/goit-react-hw-03-image-finder",
+  "homepage": "https://Tetiana-Soliarova.github.io/goit-react-hw-03-images-finder",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
@@ -12,8 +12,9 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-loader-spinner": "^3.1.14",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^4.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
