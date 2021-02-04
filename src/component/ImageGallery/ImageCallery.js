@@ -115,14 +115,17 @@ onScrollTo() {
       <div>
     
 
-    {<ul>
+    <ul className="ImageGallery">
           {error && <h1>{error.message}</h1>}
 
           <ImageGalleryItem
-            images={this.state.images}
+            images={this.state.images} key={this.state.images.id}
             onClick={this.toggleModalCloseOpen}
           />
-        </ul>} 
+
+
+          
+        </ul> 
 
         
 

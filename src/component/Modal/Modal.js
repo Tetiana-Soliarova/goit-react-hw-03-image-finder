@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import  { Component } from 'react'
 import { createPortal } from 'react-dom'
 import styles from './modal.module.css'
 
@@ -26,7 +26,7 @@ export default class Modal extends Component {
     return createPortal(
       <div className={styles.Overlay}>
         <div className={styles.Modal}>
-          <img src={this.props.largeImageURL} alt="" />
+          <img src={this.props.largeImageURL} alt=""  width='100%'/>
         </div>
       </div>,
       modalRoot,

@@ -7,6 +7,7 @@ export default function ImageGalleryItem({ images, onClick }) {
       {images.map((image) => (
         <li  key={image.id}>
           <img
+           
             onClick={onClick}
             src={image.webformatURL}
             data-sourse={image.largeImageURL}
